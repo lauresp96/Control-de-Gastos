@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nueva Transacción - Control de Gastos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4">
+    <h1>Nueva Transacción</h1>
+
+    <!-- Formulario para guardar una nueva transacción -->
+    <form th:action="@{/transacciones/guardar}" th:object="${transaccion}" method="post">
+
+        <!-- Campo para Descripción -->
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input type="text" id="descripcion" th:field="*{descripcion}" class="form-control"
+                   placeholder="Por ejemplo, Compra en el supermercado" required>
+        </div>
+
+        <!-- Campo para Tipo de Transacción (Ingreso o Gasto) -->
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo de Transacción</label>
+            <select id="tipo" th:field="*{tipo}" class="form-select" required>
+                <option value="INGRESO">Ingreso</option>
+                <option value="GASTO">Gasto</option>
+            </select>
+        </div>
+
+        <!-- Campo para Monto -->
+        <div class="mb-3">
+            <label for="monto" class="form-label">Monto</label>
+            <input type="number" id="monto" th:field="*{monto}" class="form-control" placeholder="Por ejemplo, 50.75"
+                   required>
+        </div>
+
+        <!-- Campo para seleccionar el Usuario -->
+        <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <select id="usuario" th:field="*{usuario.id}" class="form-select" required>
+                <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}"></option>
+            </select>
+        </div>
+
+        <!-- Botones para guardar o cancelar -->
+        <button type="submit" class="btn btn-primary">Guardar Transacción</button>
+        <a th:href="@{/transacciones}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>
