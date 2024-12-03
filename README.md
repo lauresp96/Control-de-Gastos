@@ -9,7 +9,7 @@ Este proyecto es una aplicación de control de gastos personales, donde los usua
 - **Thymeleaf** (para renderizado del lado del servidor)
 - **Bootstrap 5** (para el diseño de la interfaz)
 - **Chart.js** (para gráficos)
-- **H2 Database** (base de datos en memoria para desarrollo)
+- **MySql Database** (base de datos en memoria para desarrollo)
 
 ## Características
 
